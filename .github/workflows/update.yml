@@ -1,0 +1,17 @@
+on:
+  schedule:
+    - cron:  0 */6 * * * # every six hours
+name: update
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: install dependencies
+      run: pip3 install -r requirements.txt
+    - name: run
+      run: python3 ohio-covid19.py 
+    - uses: mikeal/publish-to-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
