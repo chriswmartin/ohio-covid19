@@ -12,12 +12,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: install dependencies
+    - name: graphs - install dependencies
       run: |
         sudo apt-get install -y python3-setuptools 
         pip3 install -r requirements.txt
-    - name: run
+    - name: graphs - run
       run: python3 ohio-covid19.py 
+    - name: schools - run
+      run: |
+        cd schools
+        pip3 install -r requirements.txt
+        bash run.sh
     - uses: mikeal/publish-to-github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
