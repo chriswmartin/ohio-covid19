@@ -51,9 +51,23 @@ def create_plot(all_data, top_data, time_offset, ax=None):
             ax.plot(tmp_date, tmp_count, label=county)
     return ax
 
+def get_last_update_timestamp(data):
+    all_dates = []
+    for county in data:
+        for date in all_data[county].keys():
+            all_dates.append(date)
+    return str(max(all_dates))
+
+def file_prepend(input_file, string):
+    with open(input_file, 'r+') as f:
+        content = f.read()
+        f.seek(0, 0)
+        f.write(string.rstrip('\r\n') + '\n' + content)
+
 download_data()
 all_data = load_data(DATA_FILE)
 top_data = get_top_counties(20, all_data)
+last_update_timestamp = get_last_update_timestamp(all_data)
 
 time_ranges = [200, 30, 7]
 fig, axs = plt.subplots(nrows=len(time_ranges), ncols=1, figsize=(10, 10))
@@ -69,3 +83,6 @@ plt.margins(0, 0)
 plt.tight_layout()
 
 mpld3.save_html(fig, 'index.html')
+
+last_update_timestamp_string = "<h3>Last updated: " + last_update_timestamp + "</h3>"
+file_prepend('index.html', last_update_timestamp_string)
