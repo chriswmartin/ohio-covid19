@@ -89,6 +89,7 @@ current_seven_day_cases = get_num_cases_over_time_peroid(all_data, past_seven_da
 previous_seven_day_cases = get_num_cases_over_time_peroid(all_data, previous_seven_days)
 seven_day_change = str(round((current_seven_day_cases - previous_seven_day_cases) / previous_seven_day_cases * 100, 2)) + "%"
 
+# how many days each graph should track
 time_ranges = [200, 30, 7]
 fig, axs = plt.subplots(nrows=len(time_ranges), ncols=1, figsize=(10, 10))
 for index, time_range in enumerate(time_ranges):
