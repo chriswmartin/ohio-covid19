@@ -4,6 +4,7 @@ import requests
 import pandas
 import matplotlib.pyplot as plt
 import mpld3
+from mpld3 import plugins
 
 DATA_FILE = 'data/COVIDSummaryData.csv'
 def download_data():
@@ -48,7 +49,7 @@ def create_plot(all_data, top_data, time_offset, ax=None):
                 tmp_county = county
                 tmp_date.append(date)
                 tmp_count.append(all_data[county][date]['Case Count']) 
-            ax.plot(tmp_date, tmp_count, label=county)
+        ax.plot(tmp_date, tmp_count, label=county)
     return ax
 
 def get_last_update_timestamp(data):
@@ -74,10 +75,15 @@ fig, axs = plt.subplots(nrows=len(time_ranges), ncols=1, figsize=(10, 10))
 for index, time_range in enumerate(time_ranges):
     create_plot(all_data, top_data, time_range, axs[index])
 
+handles, labels = axs[0].get_legend_handles_labels()
+axs[0].legend(handles, labels, bbox_to_anchor=(0., 1.20, 1., .120), loc='center', ncol=10, mode="expand", borderaxespad=0.0)
+interactive_legend = plugins.InteractiveLegendPlugin(zip(handles, axs[0].collections), labels, alpha_unsel=0.5, alpha_over=1.5, start_visible=True)
+plugins.connect(fig, interactive_legend)
+
 plt.set_cmap('gist_rainbow')
 font = {'family' : 'Monospace',
         'weight' : 'regular',
-        'size'   : 8}
+        'size'   : 10}
 plt.rc('font', **font)
 plt.margins(0, 0)
 plt.tight_layout()

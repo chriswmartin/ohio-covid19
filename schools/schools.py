@@ -50,7 +50,7 @@ table.add_column("Number of students", style="green")
 table.add_column("Total cases", style="red")
 table.add_column("Percentage", style="blue")
 
-top_schools = sorted(data, key=data.get, reverse=True)[:15]
+top_schools = sorted(data, key=data.get, reverse=True)[:20]
 for school in top_schools:
 # for school in track(top_schools):
     school_name = school
