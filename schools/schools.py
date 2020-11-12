@@ -55,11 +55,11 @@ for key, value in list(data.items()):
 
 table = Table(title="Top Schools")
 table.add_column("School name",  style="blue", no_wrap=True)
-table.add_column("Total cases", style="red")
-table.add_column("Number of students", style="green")
-table.add_column("Percentage", style="cyan")
+table.add_column("Total cases", style="red", no_wrap=True)
+table.add_column("Number of students", style="green", no_wrap=True)
+table.add_column("Percentage", style="cyan", no_wrap=True)
 
-NUMBER_OF_SCHOOLS = 20
+NUMBER_OF_SCHOOLS = 40
 top_schools = sorted(data, key=data.get, reverse=True)[:NUMBER_OF_SCHOOLS]
 for school in track(top_schools):
     school_name = school
