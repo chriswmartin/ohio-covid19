@@ -113,7 +113,6 @@ seven_day_change_html = "<h3>Change: " + seven_day_change + "</h3>"
 previous_seven_day_cases_html = "<h3>Previous seven day cases: " + str(previous_seven_day_cases) + "</h3>"
 current_seven_day_cases_html = "<h3>Current seven day cases: " + str(current_seven_day_cases) + "</h3>"
 style_html = "<style>body { text-align: center; font-family: monospace; margin-top: 1%; }</style>"
-viewport_html = "<meta name='viewport' content='width=device-width, initial-scale=0.5'>"
 last_update_timestamp_html = "<h4>Last updated: " + last_update_timestamp + "</h4>"
 schools_link_html = "<a href='schools/index.html'>school data</a>"
 
@@ -121,7 +120,6 @@ file_prepend('index.html', seven_day_change_html)
 file_prepend('index.html', previous_seven_day_cases_html)
 file_prepend('index.html', current_seven_day_cases_html)
 file_prepend('index.html', style_html)
-file_prepend('index.html', viewport_html)
 
 html_file = open('index.html', "a")
 html_file.writelines(last_update_timestamp_html)
