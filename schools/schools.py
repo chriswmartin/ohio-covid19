@@ -75,8 +75,8 @@ console.print(table)
 console.save_html('index.html')
 
 style_html = "<style>body { text-align: center; font-family: monospace; margin: 2%; }</style>"
-viewport_html = "<meta name='viewport' content='width=device-width, initial-scale=1.0'>"
-graphs_link_html = "<a href='/'>graphs</a>"
+viewport_html = "<meta name='viewport' content='width=device-width, initial-scale=0.5'>"
+graphs_link_html = "<a href='/ohio-covid19/'>graphs</a>"
 
 file_prepend('index.html', style_html)
 file_prepend('index.html', viewport_html)
