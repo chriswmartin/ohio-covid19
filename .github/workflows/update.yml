@@ -4,7 +4,7 @@ on:
       - main
   workflow_dispatch:
   schedule:
-    - cron:  0 */6 * * * # every six hours
+    - cron:  0 */3 * * * # every three hours
 name: update
 jobs:
   build:
@@ -22,7 +22,7 @@ jobs:
       run: |
         cd schools
         pip3 install -r requirements.txt
-        bash run.sh
+        python3 schools.py
     - uses: mikeal/publish-to-github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

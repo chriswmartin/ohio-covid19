@@ -45,14 +45,14 @@ for key, value in list(data.items()):
         del data[key]
 
 table = Table(title="Top Schools")
-table.add_column("School name",  style="cyan", no_wrap=True)
-table.add_column("Number of students", style="green")
+table.add_column("School name",  style="blue", no_wrap=True)
 table.add_column("Total cases", style="red")
-table.add_column("Percentage", style="blue")
+table.add_column("Number of students", style="green")
+table.add_column("Percentage", style="cyan")
 
 top_schools = sorted(data, key=data.get, reverse=True)[:20]
-for school in top_schools:
-# for school in track(top_schools):
+# for school in top_schools:
+for school in track(top_schools):
     school_name = school
     number_of_students = get_num_students(school)
     if number_of_students is None:
@@ -62,7 +62,8 @@ for school in top_schools:
         percentage = "{:.2%}".format(total_cases / number_of_students)
     else:
         percentage = "N/A"
-    table.add_row(str(school_name), str(number_of_students), str(total_cases), str(percentage))
+    table.add_row(str(school_name), str(total_cases), str(number_of_students), str(percentage))
 
-console = Console()
+console = Console(record=True)
 console.print(table)
+console.save_html('index.html')
