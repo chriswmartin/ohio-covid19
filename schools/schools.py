@@ -36,6 +36,12 @@ def get_num_students(school):
         number_of_students = re.sub('[^0-9,]', "", result.text)
         return locale.atoi(number_of_students)
 
+def file_prepend(input_file, string):
+    with open(input_file, 'r+') as f:
+        content = f.read()
+        f.seek(0, 0)
+        f.write(string.rstrip('\r\n') + '\n' + content)
+
 data = download_data(URL)
 
 for key, value in list(data.items()):
@@ -67,3 +73,14 @@ for school in track(top_schools):
 console = Console(record=True)
 console.print(table)
 console.save_html('index.html')
+
+style_html = "<style>body { text-align: center; font-family: monospace; margin: 2%; }</style>"
+viewport_html = "<meta name='viewport' content='width=device-width, initial-scale=1.0'>"
+graphs_link_html = "<a href='/'>graphs</a>"
+
+file_prepend('index.html', style_html)
+file_prepend('index.html', viewport_html)
+
+html_file = open('index.html', "a")
+html_file.writelines(graphs_link_html)
+html_file.close()
