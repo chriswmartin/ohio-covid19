@@ -25,7 +25,7 @@ jobs:
         python3 schools.py
     - name: generate screenshot
       run: |
-        cd ../imgs
+        cd imgs
         sudo apt-get install chromium-chromedriver
         pip3 install -r requirements.txt
         python3 screenshot.py
