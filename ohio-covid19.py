@@ -75,14 +75,17 @@ def file_prepend(input_file, string):
 
 download_data()
 all_data = load_data(DATA_FILE)
-top_data = get_top_counties(20, all_data)
+
+NUMBER_OF_COUNTIES = 20
+top_data = get_top_counties(NUMBER_OF_COUNTIES, all_data)
+
 last_update_timestamp = get_last_update_timestamp(all_data)
 
-today = datetime.datetime.now().date()
+yesterday = (datetime.datetime.now() - datetime.timedelta(days=1)).date()
 seven_day_offset = datetime.timedelta(days = 7)
-seven_days_ago = today - seven_day_offset
+seven_days_ago = yesterday - seven_day_offset
 fourteen_days_ago = seven_days_ago - seven_day_offset
-past_seven_days = [seven_days_ago + datetime.timedelta(days=x) for x in range((today-seven_days_ago).days + 1)]
+past_seven_days = [seven_days_ago + datetime.timedelta(days=x) for x in range((yesterday-seven_days_ago).days + 1)]
 previous_seven_days = [fourteen_days_ago + datetime.timedelta(days=x) for x in range((seven_days_ago-fourteen_days_ago).days + 1)]
 
 current_seven_day_cases = get_num_cases_over_time_peroid(all_data, past_seven_days)

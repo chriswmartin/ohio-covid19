@@ -1,7 +1,10 @@
+*.*.icloud
 .DS_Store
 *.swp
 *.*~
 *.*.orig
+*.*.bak
+tmp
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
