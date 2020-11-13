@@ -23,6 +23,12 @@ jobs:
         cd schools
         pip3 install -r requirements.txt
         python3 schools.py
+    - name: generate screenshot
+      run: |
+        cd ../imgs
+        sudo apt-get install chromium-chromedriver
+        pip3 install -r requirements.txt
+        python3 screenshot.py
     - uses: mikeal/publish-to-github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

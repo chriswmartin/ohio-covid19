@@ -3,6 +3,8 @@ Graphs Ohio Covid-19 data.
 
 Automatically updated every three hours.
 
+![screenshot](imgs/combined.png)
+
 ## View the data
 - [Covid-19 cases by county](https://chriswmartin.github.io/ohio-covid19/)
 - [Schools with the largest number of cases](https://chriswmartin.github.io/ohio-covid19/schools/index.html)
@@ -31,4 +33,4 @@ python3 schools.py
 
 An `index.html` file will be saved to the `ohio-covid19/schools` directory.
 
-You can edit `NUMBER_OF_SCHOOLS` to add or remove schools from the generated table. 
+You can edit `NUMBER_OF_SCHOOLS` to add or remove schools from the generated table.
