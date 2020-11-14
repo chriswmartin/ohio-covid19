@@ -2,3 +2,4 @@ requests==2.24.0
 lxml==4.5.2
 beautifulsoup4==4.9.3
 rich==9.2.0
+pandas==1.1.3
