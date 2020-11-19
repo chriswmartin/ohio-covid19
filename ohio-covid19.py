@@ -8,7 +8,7 @@ from mpld3 import plugins
 
 DATA_FILE = 'data/COVIDSummaryData.csv'
 def download_data():
-    url = "https://coronavirus.ohio.gov/static/COVIDSummaryData.csv"
+    url = "https://coronavirus.ohio.gov/static/dashboards/COVIDSummaryData.csv"
     r = requests.request('GET', url)
     with open(DATA_FILE, 'wb') as f:
         f.write(r.content)
