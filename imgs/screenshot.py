@@ -15,7 +15,6 @@ chrome_options = Options()
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--window-size=1000,1025")
 chrome_options.add_argument("--hide-scrollbars")
-# driver = webdriver.Chrome(options=chrome_options)
 driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
 
 driver.get(GRAPHS_URL)
