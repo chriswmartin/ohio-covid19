@@ -2,6 +2,7 @@ import os
 from PIL import Image
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 
 GRAPHS_URL = "https://chriswmartin.github.io/ohio-covid19/"
 SCHOOLS_URL = "https://chriswmartin.github.io/ohio-covid19/schools/index.html"
@@ -14,7 +15,8 @@ chrome_options = Options()
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--window-size=1000,1025")
 chrome_options.add_argument("--hide-scrollbars")
-driver = webdriver.Chrome(options=chrome_options)
+# driver = webdriver.Chrome(options=chrome_options)
+driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
 
 driver.get(GRAPHS_URL)
 driver.execute_script("var elements = document.querySelectorAll('h3, h4, a'); for (var i = 0; i < elements.length; i++) { elements[i].style.display = 'none' }")
