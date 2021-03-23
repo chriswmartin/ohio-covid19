@@ -90,7 +90,11 @@ previous_seven_days = [fourteen_days_ago + datetime.timedelta(days=x) for x in r
 
 current_seven_day_cases = get_num_cases_over_time_peroid(all_data, past_seven_days)
 previous_seven_day_cases = get_num_cases_over_time_peroid(all_data, previous_seven_days)
-seven_day_change = str(round((current_seven_day_cases - previous_seven_day_cases) / previous_seven_day_cases * 100, 2)) + "%"
+
+if current_seven_day_cases - previous_seven_day_cases > 0 and previous_seven_day_cases > 0:
+    seven_day_change = str(round((current_seven_day_cases - previous_seven_day_cases) / previous_seven_day_cases * 100, 2)) + "%"
+else:
+    seven_day_change = "0%"
 
 # how many days each graph should track
 time_ranges = [200, 30, 7]
