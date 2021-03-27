@@ -43,6 +43,13 @@ def file_prepend(input_file, string):
         f.seek(0, 0)
         f.write(string.rstrip('\r\n') + '\n' + content)
 
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
+
 raw_data = download_data(URL)
 
 data = []
@@ -53,7 +60,7 @@ for entry in raw_data:
     cumulative_cases = ['student_cases_cumulative', 'staff_cases_cumulative']
     
     for case in cumulative_cases:
-        if entry[case].isnumeric():
+        if entry[case].isnumeric() or is_number(entry[case]) == True:
             entry[case] = int(entry[case])
             total_cases += entry[case]
         else:
